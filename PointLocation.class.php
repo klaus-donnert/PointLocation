@@ -55,9 +55,13 @@ class PointLocation {
                 and $point['x'] <= max($vertex1['x'], $vertex2['x'])
                 and $vertex1['y'] != $vertex2['y']) {
 
-                $xinters = ($point['y'] - $vertex1['y']) * ($vertex2['x'] - $vertex1['x']) / ($vertex2['y'] - $vertex1['y']) + $vertex1['x'];
+                $xinters = ( $point['y'] - $vertex1['y'] ) 
+                            * ( $vertex2['x'] - $vertex1['x'] ) 
+                            / ( $vertex2['y'] - $vertex1['y'] ) 
+                            + $vertex1['x'];
 
-                if ($xinters == $point['x']) { // Check if point is on the polygon boundary (other than horizontal)
+                // Check if point is on the polygon boundary (other than horizontal)
+                if ($xinters == $point['x']) { 
                     return "boundary";
                 }
                 if ($vertex1['x'] == $vertex2['x'] || $point['x'] <= $xinters) {
